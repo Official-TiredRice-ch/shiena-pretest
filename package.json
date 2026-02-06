@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npx serve .",
     "build": "mkdir -p dist && cp index.html adventure.html dist/",
-    "start": "npx serve dist"
+    "start": "npx serve dist",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "react": "^18.2.0",
