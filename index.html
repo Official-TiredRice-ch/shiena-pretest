@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Social Media Registration - Join Our Beautiful Community</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 15%, #e17055 30%, #d63031 45%, #74b9ff 60%, #a29bfe 75%, #fd79a8 90%, #fdcb6e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(255, 182, 193, 0.2);
+        }
+        
+        .social-button {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        
+        .social-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .social-button:hover::before {
+            left: 100%;
+        }
+        
+        .social-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .input-focus {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px;
+            border: 2px solid #ffe0f0;
+        }
+        
+        .input-focus:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+            border-color: #ff6b9d;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .password-strength-bar {
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+            border-radius: 10px;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 25s infinite ease-in-out;
+        }
+        
+        .shape1 {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ff6b9d, #feca57);
+            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape2 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #a29bfe, #fd79a8);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 70%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+        
+        .shape3 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #fdcb6e, #e17055);
+            border-radius: 50%;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 7s;
+        }
+        
+        .shape4 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #74b9ff, #a29bfe);
+            border-radius: 50%;
+            top: 30%;
+            right: 30%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                opacity: 0.15;
+            }
+            25% { 
+                transform: translateY(-40px) rotate(90deg); 
+                opacity: 0.25;
+            }
+            50% { 
+                transform: translateY(-80px) rotate(180deg); 
+                opacity: 0.15;
+            }
+            75% { 
+                transform: translateY(-40px) rotate(270deg); 
+                opacity: 0.25;
+            }
+        }
+        
+        .shimmer {
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 157, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 107, 157, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 157, 0);
+            }
+        }
+        
+        .feature-card {
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 182, 193, 0.2);
+            border-radius: 25px;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 182, 193, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 182, 193, 0.2);
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #ff6b9d 0%, #feca57 50%, #ff6b9d 100%);
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease infinite;
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+        }
+        
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+        
+        .submit-button:hover::before {
+            left: 100%;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 107, 157, 0.4);
+        }
+        
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            animation: slideIn 0.4s ease-out;
+            border-radius: 20px;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .fancy-title {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(45deg, #ff6b9d, #feca57, #ff6b9d);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4 relative">
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+        <div class="shape shape4"></div>
+    </div>
+
+    <!-- Button to Adventure Page -->
+    <a href="adventure.html" class="fixed top-6 right-6 z-50 bg-gradient-to-r from-teal-400 to-cyan-500 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center space-x-2">
+        <span>🎨</span>
+        <span>View Color Palette</span>
+    </a>
+
+    <div id="root" class="relative z-10"></div>
+
+    <script>
+        // Simple HTML form with beautiful feminine design
+        document.getElementById('root').innerHTML = `
+            <div class="w-full max-w-6xl mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-8 items-start">
+                    <!-- Left side - Beautiful Branding -->
+                    <div class="text-white space-y-6 flex flex-col justify-center lg:min-h-[600px]">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-pink-400 rounded-full pulse-dot"></div>
+                                <span class="text-sm font-medium text-pink-200">✨ LIVE NOW</span>
+                                <span class="text-sm text-white/70">• 5M+ souls</span>
+                            </div>
+                            
+                            <h1 class="text-4xl lg:text-5xl font-bold leading-tight">
+                                Join Our
+                                <span class="fancy-title block text-4xl lg:text-5xl">
+                                    Beautiful Community
+                                </span>
+                            </h1>
+                            
+                            <p class="text-lg lg:text-xl text-white/90 leading-relaxed">
+                                Where every voice matters, every story shines, and every connection feels like magic. ✨
+                            </p>
+                        </div>
+                        
+                        <!-- Beautiful Feature Cards -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="feature-card glass-effect rounded-2xl p-4 space-y-2">
+                                <div class="w-10 h-10 bg-white/25 rounded-2xl flex items-center justify-center">
+                                    <span class="text-xl">💕</span>
+                                </div>
+                                <h3 class="font-semibold text-white text-sm">Meaningful Connections</h3>
+                                <p class="text-xs text-white/80">Find your tribe</p>
+                            </div>
+                            <div class="feature-card glass-effect rounded-2xl p-4 space-y-2">
+                                <div class="w-10 h-10 bg-white/25 rounded-2xl flex items-center justify-center">
+                                    <span class="text-xl">🌸</span>
+                                </div>
+                                <h3 class="font-semibold text-white text-sm">Safe & Supportive</h3>
+                                <p class="text-xs text-white/80">Be yourself</p>
+                            </div>
+                            <div class="feature-card glass-effect rounded-2xl p-4 space-y-2">
+                                <div class="w-10 h-10 bg-white/25 rounded-2xl flex items-center justify-center">
+                                    <span class="text-xl">✨</span>
+                                </div>
+                                <h3 class="font-semibold text-white text-sm">Creative Expression</h3>
+                                <p class="text-xs text-white/80">Share your voice</p>
+                            </div>
+                            <div class="feature-card glass-effect rounded-2xl p-4 space-y-2">
+                                <div class="w-10 h-10 bg-white/25 rounded-2xl flex items-center justify-center">
+                                    <span class="text-xl">🦋</span>
+                                </div>
+                                <h3 class="font-semibold text-white text-sm">Grow Together</h3>
+                                <p class="text-xs text-white/80">Learn & inspire</p>
+                            </div>
+                        </div>
+
+                        <!-- Beautiful Stats -->
+                        <div class="flex items-center justify-around pt-4">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-pink-200">10M+</div>
+                                <div class="text-xs text-white/70">Users</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-pink-200">200+</div>
+                                <div class="text-xs text-white/70">Countries</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-pink-200">5.0★</div>
+                                <div class="text-xs text-white/70">Rating</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right side - Beautiful Registration Form -->
+                    <div class="glass-card p-6 lg:p-8 lg:mt-8">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <h2 class="text-2xl font-bold text-gray-800">Create Account</h2>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-pink-400 rounded-full pulse-dot"></div>
+                                    <span class="text-xs text-gray-600">Secure</span>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600">Join millions sharing their journey</p>
+                        </div>
+
+                        <!-- Social Sign Up -->
+                        <div class="mb-6">
+                            <p class="text-xs text-gray-600 mb-3 text-center font-medium">Quick start with</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button class="social-button bg-gradient-to-r from-pink-400 to-pink-500 text-white py-2 px-3 rounded-2xl flex items-center justify-center space-x-2 font-medium shadow-lg text-sm">
+                                    <span>📷</span>
+                                    <span>Instagram</span>
+                                </button>
+                                <button class="social-button bg-gradient-to-r from-purple-400 to-purple-500 text-white py-2 px-3 rounded-2xl flex items-center justify-center space-x-2 font-medium shadow-lg text-sm">
+                                    <span>🎨</span>
+                                    <span>Pinterest</span>
+                                </button>
+                                <button class="social-button bg-gradient-to-r from-blue-400 to-blue-500 text-white py-2 px-3 rounded-2xl flex items-center justify-center space-x-2 font-medium shadow-lg text-sm">
+                                    <span>📘</span>
+                                    <span>Facebook</span>
+                                </button>
+                                <button class="social-button bg-gradient-to-r from-red-400 to-red-500 text-white py-2 px-3 rounded-2xl flex items-center justify-center space-x-2 font-medium shadow-lg text-sm">
+                                    <span>💌</span>
+                                    <span>Gmail</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="relative mb-5">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-xs">
+                                <span class="px-3 bg-white text-gray-500 font-medium">Or email ✨</span>
+                            </div>
+                        </div>
+
+                        <form class="space-y-4">
+                            <!-- Name Fields -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">
+                                        First Name 💕
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="input-focus w-full px-3 py-2 border-2 rounded-2xl focus:ring-2 focus:ring-pink-300 focus:border-transparent border-pink-100 text-sm"
+                                        placeholder="Sarah"
+                                    />
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-1">
+                                        Last Name 💕
+                                    </label>
+                                    <input
+                                        type="text"
+                                        class="input-focus w-full px-3 py-2 border-2 rounded-2xl focus:ring-2 focus:ring-pink-300 focus:border-transparent border-pink-100 text-sm"
+                                        placeholder="Johnson"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">
+                                    Email 💌
+                                </label>
+                                <input
+                                    type="email"
+                                    class="input-focus w-full px-3 py-2 border-2 rounded-2xl focus:ring-2 focus:ring-pink-300 focus:border-transparent border-pink-100 text-sm"
+                                    placeholder="sarah@example.com"
+                                />
+                            </div>
+
+                            <!-- Username -->
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">
+                                    Username 🌸
+                                </label>
+                                <input
+                                    type="text"
+                                    class="input-focus w-full px-3 py-2 border-2 rounded-2xl focus:ring-2 focus:ring-pink-300 focus:border-transparent border-pink-100 text-sm"
+                                    placeholder="@sarahj"
+                                />
+                            </div>
+
+                            <!-- Password -->
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">
+                                    Password 🔐
+                                </label>
+                                <input
+                                    type="password"
+                                    class="input-focus w-full px-3 py-2 border-2 rounded-2xl focus:ring-2 focus:ring-pink-300 focus:border-transparent border-pink-100 text-sm"
+                                    placeholder="••••••••"
+                                />
+                                <div class="mt-2">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-xs font-medium text-gray-700">Strength</span>
+                                        <span class="text-xs font-semibold text-pink-500">Strong 💪</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                        <div class="password-strength-bar bg-gradient-to-r from-pink-400 to-pink-500 h-1.5 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Birth Date -->
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">
+                                    Birth Date 🎂
+                                </label>
+                                <input
+                                    type="date"
+                                    class="input-focus w-full px-3 py-2 border-2 rounded-2xl focus:ring-2 focus:ring-pink-300 focus:border-transparent border-pink-100 text-sm"
+                                />
+                            </div>
+
+                            <!-- Terms and Conditions -->
+                            <div class="flex items-start space-x-2 p-3 bg-pink-50 rounded-2xl">
+                                <input
+                                    type="checkbox"
+                                    class="mt-0.5 w-4 h-4 text-pink-500 border-pink-300 rounded focus:ring-pink-400 focus:ring-2"
+                                />
+                                <label class="text-xs text-gray-700 leading-relaxed">
+                                    I agree to the{' '}
+                                    <a href="#" class="text-pink-500 hover:text-pink-700 font-bold underline">
+                                        Terms
+                                    </a>{' '}
+                                    and{' '}
+                                    <a href="#" class="text-pink-500 hover:text-pink-700 font-bold underline">
+                                        Privacy
+                                    </a>
+                                    {' '}(13+ years) 💕
+                                </label>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button
+                                type="submit"
+                                class="submit-button w-full text-white font-bold py-3 px-4 rounded-2xl transition duration-200 flex items-center justify-center space-x-2 shadow-xl text-lg"
+                            >
+                                <span>✨</span>
+                                <span>Create My Beautiful Account</span>
+                                <span>✨</span>
+                            </button>
+                        </form>
+
+                        <!-- Login Link -->
+                        <div class="mt-6 text-center">
+                            <p class="text-xs text-gray-600">
+                                Already have an account?{' '}
+                                <a href="#" class="text-pink-500 hover:text-pink-700 font-bold underline">
+                                    Sign In 💕
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    </script>
+</body>
+    <script>
+        // Password toggle functionality
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+
+        // Password strength calculator
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            const strengthDiv = document.getElementById('passwordStrength');
+            const strengthBar = document.getElementById('strengthBar');
+            const strengthPercent = document.getElementById('strengthPercent');
+            
+            if (password.length > 0) {
+                strengthDiv.style.display = 'block';
+                
+                let strength = 0;
+                if (password.length >= 8) strength += 20;
+                if (/[A-Z]/.test(password)) strength += 20;
+                if (/[a-z]/.test(password)) strength += 20;
+                if (/[0-9]/.test(password)) strength += 20;
+                if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+                
+                strengthBar.style.width = strength + '%';
+                strengthPercent.textContent = strength + '%';
+                
+                if (strength < 40) {
+                    strengthBar.className = 'password-strength-bar h-2 rounded-full bg-red-500';
+                } else if (strength < 70) {
+                    strengthBar.className = 'password-strength-bar h-2 rounded-full bg-yellow-500';
+                } else {
+                    strengthBar.className = 'password-strength-bar h-2 rounded-full bg-green-500';
+                }
+            } else {
+                strengthDiv.style.display = 'none';
+            }
+        });
+
+        // Form submission
+        const form = document.getElementById('registrationForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Registration successful! Welcome to our platform!');
+            form.reset();
+            document.getElementById('passwordStrength').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

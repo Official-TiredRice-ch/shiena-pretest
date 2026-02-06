@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure & Relaxation Color Palette</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+        }
+        
+        .color-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .color-swatch {
+            height: 200px;
+            border-radius: 12px 12px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .color-swatch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.1) 100%);
+        }
+        
+        .color-code {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+            display: inline-block;
+            margin: 4px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .color-code:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen p-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-gray-800 mb-4">Adventure & Relaxation</h1>
+            <p class="text-xl text-gray-600">Color Palette for UI Elements</p>
+            <p class="text-sm text-gray-500 mt-2">Click on any color code to copy it to clipboard</p>
+        </div>
+
+        <!-- Color Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- Card 1: Turquoise/Teal -->
+            <div class="color-card bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="color-swatch" style="background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Turquoise/Teal</h3>
+                    <p class="text-sm text-gray-600 mb-4">Ocean vibes, exploration, calm energy</p>
+                    <div class="space-y-2">
+                        <div class="color-code cursor-pointer" onclick="copyColor('#14B8A6')" style="color: #14B8A6;">
+                            #14B8A6
+                        </div>
+                        <div class="color-code cursor-pointer" onclick="copyColor('#0D9488')" style="color: #0D9488;">
+                            #0D9488
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Sky Blue -->
+            <div class="color-card bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="color-swatch" style="background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%);">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Sky Blue</h3>
+                    <p class="text-sm text-gray-600 mb-4">Open skies, freedom, tranquility</p>
+                    <div class="space-y-2">
+                        <div class="color-code cursor-pointer" onclick="copyColor('#38BDF8')" style="color: #38BDF8;">
+                            #38BDF8
+                        </div>
+                        <div class="color-code cursor-pointer" onclick="copyColor('#0EA5E9')" style="color: #0EA5E9;">
+                            #0EA5E9
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Coral/Sunset Orange -->
+            <div class="color-card bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="color-swatch" style="background: linear-gradient(135deg, #FB923C 0%, #F97316 100%);">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Coral/Sunset Orange</h3>
+                    <p class="text-sm text-gray-600 mb-4">Warmth, excitement, tropical sunsets</p>
+                    <div class="space-y-2">
+                        <div class="color-code cursor-pointer" onclick="copyColor('#FB923C')" style="color: #FB923C;">
+                            #FB923C
+                        </div>
+                        <div class="color-code cursor-pointer" onclick="copyColor('#F97316')" style="color: #F97316;">
+                            #F97316
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Sage Green -->
+            <div class="color-card bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="color-swatch" style="background: linear-gradient(135deg, #84CC16 0%, #65A30D 100%);">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Sage Green</h3>
+                    <p class="text-sm text-gray-600 mb-4">Nature, growth, peaceful outdoors</p>
+                    <div class="space-y-2">
+                        <div class="color-code cursor-pointer" onclick="copyColor('#84CC16')" style="color: #84CC16;">
+                            #84CC16
+                        </div>
+                        <div class="color-code cursor-pointer" onclick="copyColor('#65A30D')" style="color: #65A30D;">
+                            #65A30D
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Additional Info Section -->
+        <div class="mt-16 bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Color Usage Guide</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: #14B8A6;">🌊 Turquoise/Teal</h3>
+                    <p class="text-gray-600">Perfect for primary buttons, links, and interactive elements that need to feel trustworthy yet adventurous.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: #38BDF8;">☁️ Sky Blue</h3>
+                    <p class="text-gray-600">Ideal for backgrounds, secondary buttons, and elements that need to convey openness and calm.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: #FB923C;">🌅 Coral/Sunset Orange</h3>
+                    <p class="text-gray-600">Great for call-to-action buttons, highlights, and elements that need energy and warmth.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: #84CC16;">🌿 Sage Green</h3>
+                    <p class="text-gray-600">Best for success states, nature-related content, and elements promoting growth or wellness.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copy Notification -->
+    <div id="copyNotification" class="copy-notification">
+        ✓ Color copied to clipboard!
+    </div>
+
+    <script>
+        function copyColor(colorCode) {
+            // Copy to clipboard
+            navigator.clipboard.writeText(colorCode).then(function() {
+                // Show notification
+                const notification = document.getElementById('copyNotification');
+                notification.style.display = 'block';
+                
+                // Hide after 2 seconds
+                setTimeout(function() {
+                    notification.style.display = 'none';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
