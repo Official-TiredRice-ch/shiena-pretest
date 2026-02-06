@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "dev": "npx serve .",
-    "build": "echo 'Build complete'",
-    "start": "npx serve ."
+    "build": "mkdir -p dist && cp index.html adventure.html dist/",
+    "start": "npx serve dist"
   },
   "dependencies": {
     "react": "^18.2.0",
